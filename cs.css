@@ -1,0 +1,17 @@
+.sayiTahmin {
+  width: 100%;
+  text-align: center;
+}
+
+input,
+button {
+  padding: 10px;
+  text-align: center;
+}
+
+.baslik {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 100px;
+  margin-top: 70px;
+}
