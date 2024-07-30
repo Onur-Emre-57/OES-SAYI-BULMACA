@@ -1,17 +1,50 @@
-.sayiTahmin {
-  width: 100%;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-input,
-button {
+input[type="number"] {
   padding: 10px;
-  text-align: center;
+  font-size: 16px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.baslik {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 100px;
-  margin-top: 70px;
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #28a745;
+  color: #fff;
+  cursor: pointer;
+  margin: 10px 0;
 }
+
+button:hover {
+  background-color: #218838;
+}
+
+#result {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+#attempts {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #007bff; 

@@ -1,42 +1,39 @@
-let denemeSayisi = 10;
-let rastgeleSayi = 0;
-let tahminEt = document.getElementById("tahminEt");
-let yeniOyun = document.getElementById("yeniOyun");
-let sonuc = document.getElementById("sonuc");
-let sayi = document.getElementById("sayi");
+let secretNumber;
+let attempts = 0;
+let maxAttempts = 5;
 
-yeniOyun.onclick = yeni;
-tahminEt.onclick = tahmin;
-
-let randomNumber = Math.ceil(Math.random() * 100);
-console.log(randomNumber);
-
-function yeni() {
-  rastgeleSayi = randomNumber;
-  sonuc.innerHTML = "";
-  sayi.value = "";
-  tahminEt.disabled = false;
-  yeniOyun.disabled = true;
+function startGame() {
+    secretNumber = Math.floor(Math.random() * 100) + 1;
+    attempts = 0;
+    document.getElementById('result').textContent = '';
+    document.getElementById('guess').value = '';
+    document.getElementById('attempts').textContent = `Kalan Hak: ${maxAttempts}`;
 }
 
-function tahmin() {
-  let girilenSayi = parseInt(sayi.value);
-  let mesaj = "";
-  if (isNaN(girilenSayi)) return;
+function checkGuess() {
+    const guess = parseInt(document.getElementById('guess').value);
 
-  if (rastgeleSayi > girilenSayi) {
-    mesaj = "<h3>Daha büyük değer deneyin</h3>";
-  } else if (girilenSayi > rastgeleSayi) {
-    mesaj = "<h3>Daha küçük değer deneyin</h3>";
-  } else {
-    mesaj = "<h2>TEBRİKLER</h2>";
-    tahminEt.disabled = true;
-    yeniOyun.disabled = false;
-    document.querySelector("body").style.backgroundColor = "green";
-  }
+    if (isNaN(guess) || guess < 1 || guess > 100) {
+        document.getElementById('result').textContent = 'Lütfen 1 ile 100 arasında bir sayı girin.';
+        return;
+    }
 
-  denemeSayisi--;
-  sonuc.innerHTML = mesaj;
-  sonuc.innerHTML += "Yapılan Deneme : " + denemeSayisi;
-  sonuc.innerHTML += "<br / >";
+    attempts++;
+    const remainingAttempts = maxAttempts - attempts;
+
+    if (guess < secretNumber) {
+        document.getElementById('result').textContent = 'Tahmininiz çok düşük!';
+    } else if (guess > secretNumber) {
+        document.getElementById('result').textContent = 'Tahmininiz çok yüksek!';
+    } else {
+        document.getElementById('result').textContent = `Tebrikler! ${attempts} denemede doğru tahmin ettiniz.`;
+        return; // Doğru tahmin yapıldığında işlemi bitir
+    }
+
+    if (remainingAttempts > 0) {
+        document.getElementById('attempts').textContent = `Kalan Hak: ${remainingAttempts}`;
+    } else {
+        document.getElementById('result').textContent = `Tahmin haklarınız bitti! Doğru sayı: ${secretNumber}.`;
+        document.getElementById('attempts').textContent = 'Kalan Hak: 0';
+    }
 }
