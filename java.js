@@ -11,10 +11,6 @@ tahminEt.onclick = tahmin;
 let randomNumber = Math.ceil(Math.random() * 100);
 console.log(randomNumber);
 
-// function randomInt(min, max) {
-//     return parseInt(Math.random() * (max - min + 1)) + min;
-// }
-
 function yeni() {
   rastgeleSayi = randomNumber;
   sonuc.innerHTML = "";
